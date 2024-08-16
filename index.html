@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Encuesta de Satisfacción</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <!-- Header -->
+        <header class="text-center">
+            <!-- Restaurant logo -->
+            <img src="images/logo.png" alt="Logo del Restaurante" class="restaurant-logo">
+            <p class="lead">¡Valoramos tu opinión!</p>
+        </header>
+
+        <!-- Survey Form -->
+        <form class="mt-4" onsubmit="redirectToProposal(); return false;">
+    
+            <!-- Dining Experience -->
+            <div class="form-group mb-3">
+                <label for="diningExperience" class="form-label">¿Cómo fue tu experiencia hoy en el restaurante?</label>
+                <select class="form-control" id="diningExperience">
+                    <option>Excelente</option>
+                    <option>Buena</option>
+                    <option>Regular</option>
+                    <option>Mala</option>
+                </select>
+            </div>
+
+            <!-- Food Quality Rating -->
+            <div class="form-group mb-3">
+                <label for="foodQuality" class="form-label">¿Cómo calificarías la calidad de la comida?</label>
+                <div>
+                    <input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐
+                    <input type="radio" name="rating" value="4"> ⭐⭐⭐⭐
+                    <input type="radio" name="rating" value="3"> ⭐⭐⭐
+                    <input type="radio" name="rating" value="2"> ⭐⭐
+                    <input type="radio" name="rating" value="1"> ⭐
+                </div>
+            </div>
+
+            <!-- Recommend to Friends -->
+            <div class="form-group mb-3">
+                <label for="recommend" class="form-label">¿Nos recomendarías a tus amigos?</label>
+                <select class="form-control" id="recommend">
+                    <option>Definitivamente</option>
+                    <option>Tal vez</option>
+                    <option>No estoy seguro</option>
+                </select>
+            </div>
+
+            <!-- Service Quality -->
+            <div class="form-group mb-3">
+                <label for="serviceQuality" class="form-label">¿Cómo calificarías la calidad del servicio?</label>
+                <div>
+                    <input type="radio" name="serviceQuality" value="5"> ⭐⭐⭐⭐⭐
+                    <input type="radio" name="serviceQuality" value="4"> ⭐⭐⭐⭐
+                    <input type="radio" name="serviceQuality" value="3"> ⭐⭐⭐
+                    <input type="radio" name="serviceQuality" value="2"> ⭐⭐
+                    <input type="radio" name="serviceQuality" value="1"> ⭐
+                </div>
+            </div>
+
+            <!-- Cleanliness -->
+            <div class="form-group mb-3">
+                <label for="cleanliness" class="form-label">¿Cómo calificarías la limpieza del restaurante?</label>
+                <div>
+                    <input type="radio" name="cleanliness" value="5"> ⭐⭐⭐⭐⭐
+                    <input type="radio" name="cleanliness" value="4"> ⭐⭐⭐⭐
+                    <input type="radio" name="cleanliness" value="3"> ⭐⭐⭐
+                    <input type="radio" name="cleanliness" value="2"> ⭐⭐
+                    <input type="radio" name="cleanliness" value="1"> ⭐
+                </div>
+            </div>
+
+            <!-- Extra Comments Section -->
+            <div class="form-group mb-3">
+                <label for="comments" class="form-label">Comentarios adicionales</label>
+                <textarea class="form-control" id="comments" rows="3" placeholder="Escribe tus comentarios aquí..."></textarea>
+            </div>
+
+    <!-- Submit Button -->
+    <div class="text-center">
+        <button type="submit" class="btn btn-success">Enviar encuesta</button>
+    </div>
+
+
+        </form>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-5">
+            <p>Síguenos en <a href="https://www.instagram.com/lebonplangdl/">Instagram</a> | <a href="https://www.facebook.com/Lebonplangdl/">Facebook</a></p>
+            <p>Avenida Alemania 1410 esq. con Rayón - Colonia Moderna, Guadalajara, Jalisco </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function redirectToProposal() {
+            window.location.href = "redirection.html";  // Redirect to the proposal page
+        }
+    </script>
+</body>
+</html>

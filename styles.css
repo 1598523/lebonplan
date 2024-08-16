@@ -1,0 +1,40 @@
+/* General styles */
+body {
+    background-color: #F5EFE6;
+    font-family: 'Georgia', serif;
+    color: #5B2333;
+}
+
+/* Restaurant Logo */
+.restaurant-logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn-success {
+    background-color: #A67A5B;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #7C2439;
+}
+
+/* Footer */
+footer p {
+    margin: 0.5rem 0;
+}
+
+footer a {
+    color: #7C2439;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

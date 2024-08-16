@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>¿Quieres ser mi novia?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Initial black screen */
+        body {
+            background-color: black;
+            font-family: 'Georgia', serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Semi-transparent background image */
+        body::before {
+            content: "";
+            background: url('./images/us.png') no-repeat center center/cover;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            animation: fadeInBackgroundImage 5s forwards 3s;
+        }
+
+        /* Background color transition */
+        body.fade-in-background {
+            background: linear-gradient(135deg, #f5d7dc, #fbe8e7);
+            transition: background 5s ease-in-out;
+        }
+
+        /* Proposal box styles */
+        .proposal-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 3s 6s forwards;
+        }
+
+        .proposal-text {
+            font-size: 2.5rem;
+            color: #7C2439;
+            font-family: 'Dancing Script', cursive;
+            opacity: 0;
+            animation: fadeIn 3s 8s forwards;
+        }
+
+        /* Yes button styling */
+        .yes-button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            background-color: #7C2439;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 3s 10s forwards;
+        }
+
+        .yes-button:hover {
+            background-color: #5B2333;
+        }
+
+        /* No button styling */
+        .no-button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            background-color: #ccc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 3s 10s forwards;
+        }
+
+        /* Confetti canvas (hidden initially) */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInBackgroundImage {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="confetti-canvas"></canvas> <!-- Confetti canvas -->
+
+    <div class="proposal-box">
+        <h1 class="proposal-text">Nanantli, ¿Quieres ser mi novia?</h1>
+
+        <!-- Yes button -->
+        <div class="mt-4">
+            <button class="yes-button" onclick="startConfetti()">¡Sí, por supuesto!</button>
+        </div>
+
+        <!-- No button that moves away -->
+        <div class="mt-4">
+            <button class="no-button" id="noButton">No</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // Function to move the No button randomly on hover or touch
+        function moveNoButton() {
+            const noButton = document.querySelector('#noButton');
+            const maxWidth = window.innerWidth - noButton.offsetWidth;
+            const maxHeight = window.innerHeight - noButton.offsetHeight;
+            
+            const randomX = Math.random() * maxWidth;
+            const randomY = Math.random() * maxHeight;
+            
+            noButton.style.position = 'absolute';
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        }
+
+        // Adding hover event for desktop and touchstart event for mobile
+        const noButton = document.querySelector('#noButton');
+        noButton.addEventListener('mouseover', moveNoButton); // For desktop hover
+        noButton.addEventListener('touchstart', moveNoButton); // For mobile touch
+
+        // Confetti animation and redirection after clicking Yes
+        function startConfetti() {
+            const confettiCanvas = document.getElementById('confetti-canvas');
+            confettiCanvas.style.display = 'block';
+
+            // Launch confetti
+            const duration = 4 * 1000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+
+            // Redirect to gallery after confetti animation
+            setTimeout(function() {
+                window.location.href = "gallery.html";
+            }, duration);
+        }
+
+        // Trigger background color transition on load
+        window.onload = function() {
+            document.body.classList.add('fade-in-background');
+        };
+    </script>
+</body>
+</html>
